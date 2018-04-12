@@ -1,5 +1,6 @@
 package server;
 
+import executor.Md5Executor;
 import tasks.ThreadedTask;
 import worker.FileWorker;
 
@@ -36,15 +37,21 @@ public class ClientWorker extends ThreadedTask {
     }
 
     private String executeCommand(String command) {
-        FileWorker fw = new FileWorker("some king of path???");
+        FileWorker fw = new FileWorker("/Users/KatySolo/IdeaProjects/FileWorker/src/test_path/animals");
+        fw.setRecursive(false);
         switch (command.substring(0,4)) {
             case "list":
+                fw.execute(new Md5Executor(fw));
                 // list - получить список файлов в директории, на которую смотрит FileWorker.
                 break;
             case "hash":
                 //2. hash <filename> - получить хэш соответствующего файла.
                 String filename = command.split(" ")[1];
-                
+                fw.concretizePath(filename);
+                fw.execute(new Md5Executor(fw));
+
+
+
                 break;
              default:
                  break;

@@ -1,6 +1,7 @@
 package server;
 
 import client.Client;
+import dispatcher.ThreadDispatcher;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,16 +27,19 @@ public class WebServer {
     }
 
     public void startServer() {
+        ThreadDispatcher td = new ThreadDispatcher();
         Socket client;
         try {
             while (true) {
-               client = serverSocket.accept();
-                InputStream in = client.getInputStream();
-                OutputStream out = client.getOutputStream();
+                client = serverSocket.accept();
+                ClientWorker cw = new ClientWorker(client);
+                td.Add(cw);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 }
 

@@ -1,3 +1,5 @@
+package main;
+
 import dispatcher.ThreadDispatcher;
 import worker.FileWorker;
 

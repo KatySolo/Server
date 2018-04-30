@@ -23,7 +23,6 @@ public class WebServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void startServer() {

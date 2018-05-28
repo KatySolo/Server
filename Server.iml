@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="FileWorker" />
     <orderEntry type="module" module-name="ThreadDispatcher" />
+    <orderEntry type="module" module-name="GitControl" />
   </component>
 </module>

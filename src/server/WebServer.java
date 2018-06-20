@@ -30,6 +30,7 @@ public class WebServer {
         Socket client;
         try {
             while (true) {
+                System.out.println("> Waiting for a client...");
                 client = serverSocket.accept();
                 ClientWorker cw = new ClientWorker(client);
                 td.Add(cw);
